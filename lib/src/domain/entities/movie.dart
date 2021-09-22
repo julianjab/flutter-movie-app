@@ -1,4 +1,6 @@
-class Movie {
+import 'package:equatable/equatable.dart';
+
+class Movie extends Equatable {
   final int id;
   final String title;
   final String backdropImage;
@@ -6,7 +8,7 @@ class Movie {
   final DateTime? releaseDate;
   final String? overview;
 
-  Movie({
+  const Movie({
     required this.id,
     required this.title,
     required this.backdropImage,
@@ -14,4 +16,8 @@ class Movie {
     this.releaseDate,
     this.overview,
   });
+
+  @override
+  List<dynamic> get props =>
+      [id, title, backdropImage, posterImage, releaseDate, overview];
 }

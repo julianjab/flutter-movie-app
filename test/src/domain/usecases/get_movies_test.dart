@@ -44,8 +44,8 @@ void main() {
     usecase = GetMovies(movieRepository);
   });
 
-  group('GetMovies', () {
-    test("Should call the repository when is executed", () async {
+  group('GetMoviesUseCase', () {
+    test("should call the repository when is executed", () async {
       //arrange
       when(movieRepository.getTrending()).thenAnswer((_) async => []);
 
@@ -56,7 +56,7 @@ void main() {
       verify(movieRepository.getTrending()).called(1);
     });
 
-    test("Should return the movies on first page when is executed without page",
+    test("should return the movies on first page when is executed without page",
         () async {
       //arrange
       when(movieRepository.getTrending()).thenAnswer((_) async => pageOne);
@@ -69,7 +69,7 @@ void main() {
       verify(movieRepository.getTrending()).called(1);
     });
 
-    test("Should return the movies of page number when is executed with page",
+    test("should return the movies of page number when is executed with page",
         () async {
       //arrange
       when(movieRepository.getTrending(page: 1))
