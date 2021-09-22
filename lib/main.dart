@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movies_app/src/data/repositories/api_movie_repository.dart';
 import 'package:flutter_movies_app/src/domain/usecases/get_movies.dart';
-import 'package:flutter_movies_app/src/presentation/bloc/trending_movies_cubit.dart';
+import 'package:flutter_movies_app/src/presentation/cubit/trending_movies_cubit.dart';
 import 'package:flutter_movies_app/src/presentation/pages/trending_movies.dart';
 import 'package:http/http.dart' as http;
 

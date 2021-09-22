@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movies_app/src/domain/entities/movie.dart';
-import 'package:flutter_movies_app/src/presentation/bloc/movies_state.dart';
-import 'package:flutter_movies_app/src/presentation/bloc/trending_movies_cubit.dart';
+import 'package:flutter_movies_app/src/presentation/cubit/movies_state.dart';
+import 'package:flutter_movies_app/src/presentation/cubit/trending_movies_cubit.dart';
 import 'package:flutter_movies_app/src/presentation/widgets/movie.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -50,15 +50,15 @@ class _TrendingMoviesPage extends State<TrendingMoviesPage> {
   ) {
     return BlocBuilder<TrendingMoviesCubit, MoviesState>(
         builder: (context, state) {
-      if (state is MoviesLoading && state.movies.isEmpty) {
+      if (state is LoadingMovies && state.movies.isEmpty) {
         return const Center(child: CircularProgressIndicator());
       }
 
-      if (state is MoviesLoadingError && state.movies.isEmpty) {
+      if (state is LoadingMoviesError && state.movies.isEmpty) {
         return _buildErrorMessage(context, state.message);
       }
 
-      if (state is MoviesLoadingError) {
+      if (state is LoadingMoviesError) {
         final themeData = Theme.of(context);
         final snackBar = SnackBar(
           content: Text(state.message),
